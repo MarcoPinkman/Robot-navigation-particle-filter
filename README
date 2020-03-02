@@ -1,2 +1,13 @@
 一、对于Particle filtering 的理解
-    示例代码对particle filtering 的实现基于三步：1.predict：通过得到
+    示例代码对particle filtering 的实现基于三步：1.predict：通过得到小车行走的距离与方向，预测出particle的可能分布。
+                                               2.update：计算每个particle到每个landmark的距离与真实的robot到landmark距离比对，利用正态分布
+                                                         调整weight值
+                                               3.sample：在particles中找出最能反映表示robot实时位置的particle
+                                               
+    疑惑：在学习过程中对于particle filtering的实现的背后统计学原理掌握的不是很好，也无法与代码中的具体实现步骤很好地联系起来
+    
+二、所完成的改造
+    评价改造的方法：计算robot实际位置与计算出的位置的偏移，如果数字较小，则改造效果好
+    1.定位robot的唯一位置所用计算方式：将最终得到的particles与相对应的weights结合起来算出加权平均数，即为robot唯一位置。
+    2.改造为pareto分布后，效果比正态分布要差很多
+    3.如果为landmark和robot之间增加随机误差，会降低定位精度。
