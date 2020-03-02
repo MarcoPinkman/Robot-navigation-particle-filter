@@ -32,7 +32,7 @@ def mouseCallback(event, x, y, flags,null):
     
     center=np.array([[x,y]])
     trajectory=np.vstack((trajectory,np.array([x,y])))
-    #noise=sensorSigma * np.random.randn(1,2) + sensorMu
+    
     
     if previous_x >0:
         heading=np.arctan2(np.array([y-previous_y]), np.array([previous_x-x ]))
